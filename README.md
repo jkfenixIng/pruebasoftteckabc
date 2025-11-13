@@ -1,10 +1,15 @@
-ABC Company - Sistema de Gestión de Productos
+
+# ABC Company - Sistema de Gestión de Productos
+
 Sistema completo para la gestión de productos de una empresa distribuidora de gaseosas y refrescos. Incluye backend en .NET 8 y frontend en HTML/CSS/JS.
 
-🏗️ Estructura del Proyecto
+---
 
-Backend (.NET 8 API)
+## 🏗️ Estructura del Proyecto
 
+### Backend (.NET 8 API)
+
+```
 ABC/
 ├── Controllers/
 │   ├── AuthController.cs          # Autenticación JWT
@@ -21,9 +26,11 @@ ABC/
 ├── abc_company.db                 # Base de datos SQLite
 ├── appsettings.json               # Configuración
 └── Program.cs                     # Punto de entrada
+```
 
-Frontend (HTML/CSS/JS)
+### Frontend (HTML/CSS/JS)
 
+```
 ├── components/              # Componentes modulares
 │   ├── modals/
 │   │   ├── add-product.html
@@ -44,46 +51,53 @@ Frontend (HTML/CSS/JS)
 │   ├── componentLoader.js # Carga de componentes
 │   └── app.js             # Punto de entrada
 └── index.html             # Página principal
+```
 
-📋 Prerrequisitos
-Backend
-.NET 8 SDK
+---
 
-Visual Studio 2022 o Visual Studio Code
+## 📋 Prerrequisitos
 
-SQLite (incluido automáticamente)
+### Backend
+- .NET 8 SDK
+- Visual Studio 2022 o Visual Studio Code
+- SQLite (incluido automáticamente)
 
-Frontend
-Servidor web (IIS Express, Live Server, etc.)
+### Frontend
+- Servidor web (IIS Express, Live Server, etc.)
+- Navegador moderno (Chrome, Firefox, Edge)
 
-Backend ejecutándose en https://localhost:44350 revisar puerto de ejecución local
+- Backend ejecutándose en `https://localhost:44350` (revisar puerto de ejecución local)
 
-Navegador moderno (Chrome, Firefox, Edge)
+---
 
-🚀 Configuración y Ejecución
-Backend
+## 🚀 Configuración y Ejecución
 
-En caso de visual studico code
-1. Clonar el repositorio
+### Backend
 
-    git clone [url-del-repositorio]
-    cd ABC
-2. Restaurar paquetes NuGet
-    dotnet restore
-3. Ejecutar la aplicación
-    dotnet run
-Con visual Studio 2022 o superior abrir solucion del proyecto
+En Visual Studio Code (ejemplo):
 
-La API estará disponible en: https://localhost:44350 confirmar en ejecucion local por disponibilidad de puertos
+```powershell
+git clone [url-del-repositorio]
+cd ABC
+dotnet restore
+dotnet run
+```
 
-Swagger UI: https://localhost:44350/swagger
+En Visual Studio 2022 o superior: abrir la solución del proyecto.
 
-Frontend
+La API estará disponible en: `https://localhost:44350` (confirmar puerto en ejecución local).
 
-Abrir archivo index.html en navegador o liveserver de VS code
+Swagger UI: `https://localhost:44350/swagger`
 
-Backend - appsettings.json
+### Frontend
 
+Abrir `index.html` en el navegador o usar Live Server de VS Code.
+
+---
+
+## Backend - `appsettings.json`
+
+```json
 {
   "ConnectionStrings": {
     "DefaultConnection": "Data Source=abc_company.db"
@@ -94,40 +108,47 @@ Backend - appsettings.json
     "Audience": "ABC.Company.Client"
   }
 }
+```
 
-Frontend - Configuración de API
-En js/app.js:
+## Frontend - Configuración de API
 
+En `js/app.js`:
+
+```js
 const API_BASE_URL = 'https://localhost:44350/api';
+```
 
-🔐 Autenticación
-Usuario por defecto: admin
+---
 
-Contraseña: password
+## 🔐 Autenticación
 
-Esquema: JWT Bearer Token
+- Usuario por defecto: `admin`
+- Contraseña: `password`
+- Esquema: JWT Bearer Token
 
-📚 Endpoints Principales
-Autenticación
-POST /api/auth/login - Iniciar sesión
+---
 
-Productos
-GET /api/products - Listar todos los productos
+## 📚 Endpoints Principales
 
-GET /api/products/{id} - Obtener producto por ID
+**Autenticación**
 
-POST /api/products - Crear nuevo producto
+- `POST /api/auth/login` - Iniciar sesión
 
-PUT /api/products/{id} - Actualizar producto completo
+**Productos**
 
-PATCH /api/products/{id}/stock - Actualizar solo stock
+- `GET /api/products` - Listar todos los productos
+- `GET /api/products/{id}` - Obtener producto por ID
+- `POST /api/products` - Crear nuevo producto
+- `PUT /api/products/{id}` - Actualizar producto completo
+- `PATCH /api/products/{id}/stock` - Actualizar solo stock
+- `PATCH /api/products/{id}/prices` - Actualizar solo precios
+- `DELETE /api/products/{id}` - Eliminar producto
 
-PATCH /api/products/{id}/prices - Actualizar solo precios
+---
 
-DELETE /api/products/{id} - Eliminar producto
+## 🗃️ Modelo de Datos
 
-🗃️ Modelo de Datos
-
+```csharp
 public class Product
 {
     public Guid Id { get; set; }
@@ -140,182 +161,160 @@ public class Product
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
 }
+```
 
-📱 Funcionalidades del Frontend
-Gestión de Productos
-✅ Listar productos con ubicación y precios
+---
 
-✅ Agregar nuevos productos
+## 📱 Funcionalidades del Frontend
 
-✅ Editar productos existentes
+**Gestión de Productos**
 
-✅ Actualizar existencias (stock)
+- ✅ Listar productos con ubicación y precios
+- ✅ Agregar nuevos productos
+- ✅ Editar productos existentes
+- ✅ Actualizar existencias (stock)
+- ✅ Actualizar precios (detal y mayor)
+- ✅ Eliminar productos
 
-✅ Actualizar precios (detal y mayor)
+**Características de UX**
 
-✅ Eliminar productos
+- ✅ Interfaz responsive
+- ✅ Validaciones en tiempo real
+- ✅ Feedback visual para acciones
+- ✅ Mensajes de confirmación
+- ✅ Indicadores de carga
 
-Características de UX
-✅ Interfaz responsive
+---
 
-✅ Validaciones en tiempo real
+## 🎯 Uso de la Aplicación
 
-✅ Feedback visual para acciones
+**Iniciar Sesión**
 
-✅ Mensajes de confirmación
+- Ingresar credenciales (`admin` / `password`)
+- El sistema redirige automáticamente
 
-✅ Indicadores de carga
+**Ver Productos**
 
-🎯 Uso de la Aplicación
-Iniciar Sesión
+- Lista en grid con tarjetas de productos
+- Información: nombre, descripción, precios, ubicación, stock
 
-Ingresar credenciales (admin/password)
+**Gestionar Productos**
 
-Sistema redirige automáticamente
+- Agregar: Botón "Nuevo Producto"
+- Editar: Ícono de edición (lápiz) en tarjeta
+- Stock: Ícono de cajas en tarjeta
+- Precios: Ícono de dólar en tarjeta
+- Eliminar: Ícono de basura en tarjeta
 
-Ver Productos
+---
 
-Lista grid con tarjetas de productos
+## 🛠️ Desarrollo y Modificaciones
 
-Información: nombre, descripción, precios, ubicación, stock
+### Backend
 
-Gestionar Productos
-
-Agregar: Botón "Nuevo Producto"
-
-Editar: Ícono de edición (lápiz) en tarjeta
-
-Stock: Ícono de cajas en tarjeta
-
-Precios: Ícono de dólar en tarjeta
-
-Eliminar: Ícono de basura en tarjeta
-
-🛠️ Desarrollo y Modificaciones
-Backend
 Para agregar nuevos modelos:
 
-Crear clase en Models/
-
-Agregar DbSet en ApplicationDbContext
-
-Crear migración: dotnet ef migrations add [Nombre]
-
-Actualizar base: dotnet ef database update
+- Crear clase en `Models/`
+- Agregar `DbSet` en `ApplicationDbContext`
+- Crear migración: `dotnet ef migrations add [Nombre]`
+- Actualizar base: `dotnet ef database update`
 
 Para nuevos servicios:
 
-Crear interfaz en Services/
+- Crear interfaz en `Services/`
+- Implementar servicio
+- Registrar en `Program.cs`
 
-Implementar servicio
+### Frontend
 
-Registrar en Program.cs
+Modificar estilos (ejemplo en `css/styles.css`):
 
-Frontend
-Modificar Estilos
-Editar css/styles.css:
-
+```css
 :root {
     --primary-color: #0d6efd;    /* Color principal */
     --success-color: #198754;    /* Color éxito */
     /* ... más variables */
 }
+```
 
-Agregar Nuevas Funcionalidades
+Agregar nuevas funcionalidades:
 
-Crear componente en components/
+- Crear componente en `components/`
+- Actualizar `componentLoader.js` si es necesario
+- Agregar lógica en el archivo JS correspondiente
 
-Actualizar componentLoader.js si es necesario
+---
 
-Agregar lógica en archivo JS correspondiente
+## 🧪 Testing
 
-🧪 Testing
-Backend con Swagger
-Ejecutar la aplicación
+### Backend con Swagger
 
-Ir a https://localhost:44350/swagger
+1. Ejecutar la aplicación
+2. Ir a `https://localhost:44350/swagger`
+3. Usar el endpoint `/api/auth/login` para obtener token
+4. Hacer clic en "Authorize" y pegar el token: `Bearer [tu-token]`
+5. Probar todos los endpoints
 
-Usar el endpoint /api/auth/login para obtener token
+### Frontend
 
-Hacer clic en "Authorize" y pegar el token: Bearer [tu-token]
+- Asegurarse de que el backend esté ejecutándose
+- Abrir la aplicación en el navegador
+- Probar el flujo completo de gestión de productos
 
-Probar todos los endpoints
+---
 
-Frontend
-Asegurarse de que el backend esté ejecutándose
+## 🔧 Tecnologías Utilizadas
 
-Abrir la aplicación en el navegador
+**Backend**
 
-Probar el flujo completo de gestión de productos
+- .NET 8
+- Entity Framework Core
+- SQLite
+- JWT Authentication
+- Swagger/OpenAPI
 
-🔧 Tecnologías Utilizadas
-Backend
-.NET 8
+**Frontend**
 
-Entity Framework Core
+- HTML5
+- CSS3
+- JavaScript ES6+
+- Bootstrap 5
+- Font Awesome
+- Fetch API
 
-SQLite
+---
 
-JWT Authentication
+## 🚨 Solución de Problemas
 
-Swagger/OpenAPI
+- **Error de CORS**: Verificar que el backend esté ejecutándose y confirmar la URL en `API_BASE_URL` en el frontend.
+- **Token expirado**: La aplicación redirige automáticamente al login.
+- **Componentes no cargan**: Verificar estructura de carpetas y revisar consola del navegador para errores.
+- **Base de datos no se crea**: Verificar permisos de escritura y revisar connection string en `appsettings.json`.
 
-Frontend
-HTML5
+---
 
-CSS3
+## 📦 Paquetes NuGet Utilizados (Backend)
 
-JavaScript ES6+
+- Microsoft.EntityFrameworkCore.Sqlite
+- Microsoft.AspNetCore.Authentication.JwtBearer
+- Swashbuckle.AspNetCore
+- Microsoft.EntityFrameworkCore.Design
 
-Bootstrap 5
+---
 
-Font Awesome
+## 📞 Soporte
 
-Fetch API
-
-🚨 Solución de Problemas
-Error de CORS
-Verificar que el backend esté ejecutándose
-
-Confirmar URL en API_BASE_URL en el frontend
-
-Token expirado
-La aplicación redirige automáticamente al login
-
-Componentes no cargan
-Verificar estructura de carpetas
-
-Revisar consola del navegador para errores
-
-Base de datos no se crea
-Verificar permisos de escritura
-
-Revisar connection string en appsettings.json
-
-📦 Paquetes NuGet Utilizados (Backend)
-Microsoft.EntityFrameworkCore.Sqlite
-
-Microsoft.AspNetCore.Authentication.JwtBearer
-
-Swashbuckle.AspNetCore
-
-Microsoft.EntityFrameworkCore.Design
-
-📞 Soporte
 Para issues o mejoras, revisar la consola del navegador (F12) y verificar que el backend esté respondiendo.
 
-🎉 ¡Listo para Usar!
+---
 
-✅ Backend .NET con seguridad JWT
+## 🎉 ¡Listo para Usar!
 
-✅ Frontend responsive con todas las operaciones CRUD
-
-✅ Base de datos SQLite con Entity Framework
-
-✅ Arquitectura modular y mantenible
-
-✅ Validaciones y manejo de errores
-
-✅ Documentación completa
+- ✅ Backend .NET con seguridad JWT
+- ✅ Frontend responsive con todas las operaciones CRUD
+- ✅ Base de datos SQLite con Entity Framework
+- ✅ Arquitectura modular y mantenible
+- ✅ Validaciones y manejo de errores
+- ✅ Documentación completa
 
 ¡Disfruta usando el sistema de gestión de productos de ABC Company!
