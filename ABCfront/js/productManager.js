@@ -219,9 +219,21 @@ class ProductManager {
             if (elementId && loadingText) {
                 const element = document.getElementById(elementId);
                 if (element) {
-                    element.innerHTML = `
-                        <i class="fas fa-spinner fa-spin"></i> ${loadingText}
-                    `;
+                    const tag = element.tagName ? element.tagName.toLowerCase() : '';
+                    // Si el elemento es un botón/input, reemplazar su contenido
+                    if (tag === 'button' || (tag === 'input' && (element.type === 'submit' || element.type === 'button'))) {
+                        element.innerHTML = `
+                            <i class="fas fa-spinner fa-spin"></i> ${loadingText}
+                        `;
+                    } else {
+                        // Si se pasó el id de un contenedor (p.ej. el formulario), intentar encontrar un botón submit dentro
+                        const btn = element.querySelector && (element.querySelector('button[type="submit"], input[type="submit"]'));
+                        if (btn) {
+                            btn.innerHTML = `
+                                <i class="fas fa-spinner fa-spin"></i> ${loadingText}
+                            `;
+                        }
+                    }
                 }
             }
             

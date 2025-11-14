@@ -28,6 +28,18 @@ class UIManager {
         }
     }
 
+    static showGlobalLoading(show) {
+        // Prefer an overlay element if provided in the layout
+        const overlay = document.getElementById('globalLoadingOverlay');
+        if (overlay) {
+            overlay.style.display = show ? 'flex' : 'none';
+            return;
+        }
+
+        // Fallback to the existing small spinner if no global overlay exists
+        this.showLoading(show);
+    }
+
     static showSection(sectionId) {
         const sections = ['loginSection', 'appSection'];
         sections.forEach(id => {
